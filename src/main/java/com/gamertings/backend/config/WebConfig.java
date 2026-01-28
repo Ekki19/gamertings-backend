@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")                  // alle Endpoints
-                        .allowedOrigins("http://localhost:3000") // React-Frontend erlauben
+                        .allowedOrigins("http://localhost:4200") // React-Frontend erlauben
                         .allowedMethods("*");               // GET, POST, PUT, DELETE...
             }
         };
