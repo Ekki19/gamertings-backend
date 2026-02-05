@@ -12,7 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
-.twitchCredentials.properties
+
 
 ### IntelliJ IDEA ###
 .idea
@@ -32,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+#Twitch API Credentials
+src/main/resources/twitchCredentials.properties
