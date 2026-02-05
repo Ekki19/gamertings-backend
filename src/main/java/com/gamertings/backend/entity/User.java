@@ -1,4 +1,4 @@
-package com.gamertings.backend.user;
+package com.gamertings.backend.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

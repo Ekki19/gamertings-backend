@@ -1,12 +1,14 @@
-package com.gamertings.backend.user;
+package com.gamertings.backend.controller;
 
+import com.gamertings.backend.repository.UserRepository;
+import com.gamertings.backend.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:3000") // erlaubt React-Frontend
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     private final UserRepository userRepository;
@@ -18,7 +20,7 @@ public class UserController {
     @GetMapping
     public List<User> getAllUsers() {
         List<User> users = userRepository.findAll();
-        System.out.println("Anzahl gefundener User im Backend: " + users.size()); // Schau in die Docker-Logs
+        System.out.println("Anzahl gefundener User im Backend: " + users.size());
         return userRepository.findAll();
     }
 }

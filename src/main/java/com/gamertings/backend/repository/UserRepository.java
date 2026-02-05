@@ -1,5 +1,6 @@
-package com.gamertings.backend.user;
+package com.gamertings.backend.repository;
 
+import com.gamertings.backend.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> { }
