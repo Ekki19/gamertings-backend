@@ -13,6 +13,7 @@ public class IGDBController {
     @GetMapping("/search")
     public String searchGames(@RequestParam String name) {
         // Wir rufen den Service auf und geben das Ergebnis (JSON) zurück
+        System.out.println("Suche nach: " + name);
         return igdbService.getGameByName(name);
     }
 }
