@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:4200")
 public class IGDBController {
 
-    IGDBService igdbService = new IGDBService();
+    private final IGDBService igdbService;
+
+    public IGDBController(IGDBService igdbService) {
+        this.igdbService = igdbService;
+    }
 
     @GetMapping("/search")
     public String searchGames(@RequestParam String name) {

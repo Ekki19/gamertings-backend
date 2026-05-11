@@ -4,6 +4,7 @@ import com.api.igdb.exceptions.RequestException;
 import com.api.igdb.request.IGDBWrapper;
 import com.api.igdb.utils.Endpoints;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -12,6 +13,7 @@ import java.util.logging.Logger;
 
 
 @Slf4j
+@Service
 public class IGDBService {
 
     private final static String resources = "twitchCredentials.properties";
@@ -45,9 +47,11 @@ public class IGDBService {
 
     public String getGameByName(String gameName) {
         try {
-            String query = "fields name, summary, cover.image_id, screenshots.*; where name ~ *\"" + gameName + "\"*;";
+            String query = "search \"" + gameName + "\"; fields name, summary, cover.image_id, first_release_date, game_type, total_rating, total_rating_count, involved_companies.company.name; limit 50;";
             log.info("Executing query: {}", query);
-            return IGDBWrapper.INSTANCE.apiJsonRequest(Endpoints.GAMES, query);
+            String result = IGDBWrapper.INSTANCE.apiJsonRequest(Endpoints.GAMES, query);
+            log.info("Game result: {}", result);
+            return result;
         } catch( RequestException ex) {
             System.err.println("IGDB API Fehler: Status Code " + ex.getStatusCode());
 
