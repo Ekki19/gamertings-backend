@@ -1,6 +1,7 @@
 package com.gamertings.backend.controller;
 
 import com.gamertings.backend.service.IGDBService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,5 +20,10 @@ public class IGDBController {
         // Wir rufen den Service auf und geben das Ergebnis (JSON) zurück
         System.out.println("Suche nach: " + name);
         return igdbService.getGameByName(name);
+    }
+
+    @GetMapping(value = "/game/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getGame(@PathVariable long id) {
+        return igdbService.getGameById(id);
     }
 }

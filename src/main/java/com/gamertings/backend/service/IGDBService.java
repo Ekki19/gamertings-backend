@@ -58,6 +58,19 @@ public class IGDBService {
             //response for frontend
             return "{\"error\": \"API nicht erreichbar\", \"details\": \"" + ex.getMessage() + "\"}";
         }
+    }
 
+
+    public String getGameById(long id) {
+        try {
+            String query = "fields name, summary, cover.image_id, first_release_date, game_type, "
+                    + "total_rating, total_rating_count, involved_companies.company.name; "
+                    + "where id = " + id + ";";
+            log.info("Executing query: {}", query);
+            return IGDBWrapper.INSTANCE.apiJsonRequest(Endpoints.GAMES, query);
+        } catch (RequestException ex) {
+            System.err.println("IGDB API Fehler: Status Code " + ex.getStatusCode());
+            return "{\"error\": \"API nicht erreichbar\"}";
+        }
     }
 }
