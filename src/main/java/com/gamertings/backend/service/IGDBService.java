@@ -47,7 +47,9 @@ public class IGDBService {
 
     public String getGameByName(String gameName) {
         try {
-            String query = "search \"" + gameName + "\"; fields name, summary, cover.image_id, first_release_date, game_type, total_rating, total_rating_count, involved_companies.company.name; limit 50;";
+            String query = "search \"" + gameName + "\"; fields name, summary, cover.image_id, first_release_date, game_type, total_rating, total_rating_count, involved_companies.company.name;"
+                    + "where game_type = 0 & cover != null & involved_companies != null;"
+                    + " limit 50;";
             log.info("Executing query: {}", query);
             String result = IGDBWrapper.INSTANCE.apiJsonRequest(Endpoints.GAMES, query);
             log.info("Game result: {}", result);
